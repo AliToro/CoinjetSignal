@@ -3,15 +3,15 @@ from typing import List, Union
 from pydantic import BaseModel
 
 
-class UserBase(BaseModel):
+class SignalBase(BaseModel):
     email: str
 
 
-class UserCreate(UserBase):
+class SignalCreate(SignalBase):
     password: str
 
 
-class User(UserBase):
+class Signal(SignalBase):
     id: int
     is_active: bool
 
