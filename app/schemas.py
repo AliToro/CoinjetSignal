@@ -9,23 +9,23 @@ class SignalBase(BaseModel):
     telegram_chat_id: str
     telegram_chat_title: str
     pair: str
-    stop: float
-    entry: float  # (array of entries)
-    target: float  # (array of TPs)
-    is_futures: bool
-    is_short: bool  # (required if is_futures)
+    stop: Optional[float]
+    entry: Optional[float]  # (array of entries)
+    target: Optional[float]  # (array of TPs)
+    is_futures: Optional[bool]
+    is_short: Optional[bool]  # (required if is_futures)
     leverage: Optional[float] # (required if is_futures)
+    received_at: Optional[datetime]
+    delivered_at: Optional[datetime]
+    status: Optional[int]
 
 
 class SignalCreate(SignalBase):
-    received_at: datetime
+    pass
 
 
 class Signal(SignalBase):
     id: int
-    received_at: datetime
-    sent_at: datetime
-    status: int
 
     class Config:
         orm_mode = True
