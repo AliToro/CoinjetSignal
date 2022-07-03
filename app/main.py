@@ -22,9 +22,6 @@ def get_db():
 
 @app.post("/signals/", response_model=schemas.Signal)
 def create_signal(signal: schemas.SignalCreate, db: Session = Depends(get_db)):
-    db_signal = crud.get_signal_by_email(db, email=signal.email)
-    if db_signal:
-        raise HTTPException(status_code=400, detail="Email already registered")
     return crud.create_signal(db=db, signal=signal)
 
 
