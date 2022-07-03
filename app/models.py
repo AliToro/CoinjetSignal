@@ -20,4 +20,4 @@ class Signal(Base):
     is_short = Column(Boolean)  # (required if is_futures)
     leverage = Column(Float)  # (required if is_futures)
     received_at = Column(DATETIME)
-    sent_at = Column(DATETIME)
+    delivered_at = Column(DATETIME)

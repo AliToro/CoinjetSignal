@@ -9,10 +9,10 @@ class SignalBase(BaseModel):
     telegram_chat_id: str
     telegram_chat_title: str
     pair: str
-    stop: Optional[float]
-    entry: Optional[float]  # (array of entries)
-    target: Optional[float]  # (array of TPs)
-    is_futures: Optional[bool]
+    stop: float
+    entry: float  # (array of entries)
+    target: float  # (array of TPs)
+    is_futures: bool
     is_short: Optional[bool]  # (required if is_futures)
     leverage: Optional[float] # (required if is_futures)
     received_at: Optional[datetime]

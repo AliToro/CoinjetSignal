@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import List
 
 from fastapi import Depends, FastAPI, HTTPException
@@ -22,6 +23,8 @@ def get_db():
 
 @app.post("/signals/", response_model=schemas.Signal)
 def create_signal(signal: schemas.SignalCreate, db: Session = Depends(get_db)):
+    signal.received_at = datetime.now()
+    signal.status = 0
     return crud.create_signal(db=db, signal=signal)
 
 
