@@ -10,7 +10,7 @@ class SignalBase(BaseModel):
     telegram_chat_title: str
     pair: str
     stop: float
-    entry: float  # (array of entries)
+    entry: List[float]  # (array of entries)
     target: float  # (array of TPs)
     is_futures: bool
     is_short: Optional[bool]  # (required if is_futures)

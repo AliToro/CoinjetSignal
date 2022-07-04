@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, Float, String, DATETIME
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, Float, String, TIMESTAMP, ARRAY
 from sqlalchemy.orm import relationship
 
 from .database import Base
@@ -14,10 +14,10 @@ class Signal(Base):
     telegram_chat_title = Column(String)
     pair = Column(String)
     stop = Column(Float)
-    entry = Column(Float)  # (array of entries)
+    entry = Column(ARRAY(Float))  # (array of entries)
     target = Column(Float)  # (array of TPs)
     is_futures = Column(Boolean)
     is_short = Column(Boolean)  # (required if is_futures)
     leverage = Column(Float)  # (required if is_futures)
-    received_at = Column(DATETIME)
-    delivered_at = Column(DATETIME)
+    received_at = Column(TIMESTAMP)
+    delivered_at = Column(TIMESTAMP)
