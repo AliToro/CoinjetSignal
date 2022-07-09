@@ -11,7 +11,7 @@ class SignalBase(BaseModel):
     pair: str
     stop: float
     entry: List[float]  # (array of entries)
-    target: float  # (array of TPs)
+    target: List[float]  # (array of TPs)
     is_futures: bool
     is_short: Optional[bool]  # (required if is_futures)
     leverage: Optional[float] # (required if is_futures)

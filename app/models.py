@@ -15,7 +15,7 @@ class Signal(Base):
     pair = Column(String)
     stop = Column(Float)
     entry = Column(ARRAY(Float))  # (array of entries)
-    target = Column(Float)  # (array of TPs)
+    target = Column(ARRAY(Float))  # (array of TPs)
     is_futures = Column(Boolean)
     is_short = Column(Boolean)  # (required if is_futures)
     leverage = Column(Float)  # (required if is_futures)
