@@ -62,3 +62,4 @@ def send_signal(signal: schemas.SignalCreate):
     if False:
         failed_signals_queue.append(signal)
     logging.info("Signal sent successful!")
+
