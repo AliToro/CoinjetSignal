@@ -7,6 +7,7 @@ from starlette import status
 
 from . import crud, models, schemas, log
 from .database import SessionLocal, engine
+from .signal_status import SignalStatus
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -25,7 +26,7 @@ def get_db():
 @app.post("/signals/", response_model=schemas.Signal)
 def create_signal(signal: schemas.SignalCreate, db: Session = Depends(get_db)):
     signal.received_at = datetime.now()
-    signal.status = 0
+    signal.status = SignalStatus.Received.value
     if signal.is_futures:
         if signal.is_short is None:
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
