@@ -1,0 +1,23 @@
+name: deploy on server
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build
+    runs-on: self-hosted
+    steps:
+    - name: build
+      run: |
+        cd /home/coinjet-signal/dockerize/
+        docker container stop coinjet-signal-cnt
+        docker container rm coinjet-signal-cnt
+        rm -r *
+        rm -r .git*
+        git clone https://github.com/AliToro/CoinjetSignal.git .
+        docker build -t coinjet-signal .
+        docker run --env-file ../docker_env.list -d --name coinjet-signal-cnt -p 8010:8010 coinjet-signal
